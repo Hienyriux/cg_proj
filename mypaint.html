@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的画图软件</title>
+</head>
+    
+<body>
+
+<canvas id="idCanvas" width="800" height="400" style="border:1px solid #c3c3c3;">
+</canvas><br>
+
+<table id="idDialog1" style="position:absolute; background:#CCCCCC; display:none;">
+	<tr id="idTopbar1">
+		<th align="left">设置画布大小</th>
+		<th align="right"><button id="idCloseButton1" class="myCloseButton"></button></th>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">宽：<input type="text" id="idInput1_1"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">高：<input type="text" id="idInput1_2"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="button" id="idButton1" value="确定"></td>
+	</tr>
+</table>
+
+<table id="idDialog2" style="position:absolute; background:#CCCCCC; display:none;">
+	<tr id="idTopbar2">
+		<th align="left">输入保存文件名</th>
+		<th align="right"><button id="idCloseButton2" class="myCloseButton"></button></th>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">文件名（不带扩展名）：</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="left"><input type="text" id="idInput2"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="button" id="idButton2" value="确定"></td>
+	</tr>
+</table>
+
+<table id="idDialog3" style="position:absolute; background:#CCCCCC; display:none;">
+	<tr id="idTopbar3">
+		<th align="left">设置颜色</th>
+		<th align="right"><button id="idCloseButton3" class="myCloseButton"></button></th>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><code>R: </code><input type="text" id="idInput3_1"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><code>G: </code><input type="text" id="idInput3_2"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><code>B: </code><input type="text" id="idInput3_3"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="button" id="idButton3" value="确定"></td>
+	</tr>
+</table>
+
+<table id="idDialog4" style="position:absolute; background:#CCCCCC; display:none;">
+	<tr id="idTopbar4">
+		<th align="left">选择图形种类与绘制算法</th>
+		<th align="right"><button id="idCloseButton4" class="myCloseButton"></button></th>
+	</tr>
+	<tr>
+		<td>线段：</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="radio" name="primitiveAlgo" value="Line_DDA">DDA
+		<input type="radio" name="primitiveAlgo" value="Line_Bresenham">Bresenham</td>
+	</tr>
+	<tr>
+		<td>多边形：</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="radio" name="primitiveAlgo" value="Poly_DDA">DDA
+		<input type="radio" name="primitiveAlgo" value="Poly_Bresenham">Bresenham</td>
+	</tr>
+	<tr>
+		<td>椭圆：</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="radio" name="primitiveAlgo" value="Elli_Bresenham">中点椭圆算法</td>
+	</tr>
+	<tr>
+		<td>曲线：</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="radio" name="primitiveAlgo" value="Bezier">Bezier
+		<input type="radio" name="primitiveAlgo" value="B_spline">B-spline</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">本窗口关闭后，选项才能生效！</td>
+	</tr>
+</table>
+
+<table id="idDialog5" style="position:absolute; background:#CCCCCC; display:none;">
+	<tr id="idTopbar5">
+		<th align="left">选择变换种类</th>
+		<th align="right"><button id="idCloseButton5" class="myCloseButton"></button></th>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="radio" name="primitiveTrans" value="translation">平移
+		<input type="radio" name="primitiveTrans" value="rotation">旋转
+		<input type="radio" name="primitiveTrans" value="scale">缩放</td>
+	</tr>
+	<tr>
+		<td>裁剪：</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="radio" name="primitiveTrans" value="Cohen_Sutherland">Cohen-Sutherland
+		<input type="radio" name="primitiveTrans" value="Liang_Barsky">Liang-Barsky</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">本窗口关闭后，选项才能生效！</td>
+	</tr>
+</table>
+
+<input id="idResetCanvas" type="button" value="设置画布大小">
+<input id="idSaveCanvas" type="button" value="保存图片">
+<input id="idSetColor" type="button" value="设置颜色">
+<input id="idOpenCanvas" type="button" value="打开图片">
+<input id="idFileInput" type="file" accept=".bmp" style="display:none;" onchange="loadFile();">
+<input id="idDrawPrimitive" type="button" value="绘制图形">
+<input id="idTransPrimitive" type="button" value="图元变换">
+<br><br>
+<table>
+	<tr>
+		<td>当前颜色：</td>
+		<td><div id="idColorSpan" style="background-color:#000; width:30px; height:30px;"></div></td>
+		<td><pre>          </pre></td>
+		<td>当前状态：</td>
+		<td><span id="idActionSpan"></span></td>
+		<td><span id="idPrimitiveSpan"></span></td>
+		<td><span id="idAlgoSpan"></span></td>
+		<td><pre>          </pre></td>
+		<td><span id="idPromptSpan"></span></td>
+		<td><pre>          </pre></td>
+		<td><span id="idMouseSpan"></span></td>
+	</tr>
+</table>
+<style>
+
+.myCloseButton { 
+	width:30px;
+	height:30px;
+	background:url(close_button.png);
+	border:none;
+}
+
+.myCloseButton:hover { 
+	background:url(close_button1.png);
+}
+
+</style>
+
+<script src="init.js"></script>
+<script src="resize_color.js"></script>
+<script src="save_img.js"></script>
+<script src="load_img.js"></script>
+<script src="draw.js"></script>
+<script src="line.js"></script>
+<script src="ellipse.js"></script>
+<script src="curve.js"></script>
+<script src="transform.js"></script>
+<script src="clip.js"></script>
+
+</body>
+</html>

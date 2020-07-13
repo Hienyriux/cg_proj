@@ -5,6 +5,8 @@ Project of Nanjing University's Introduction to Computer Graphics course in 2019
 + 可以进行简单的图元变换: 平移, 旋转(除椭圆外), 缩放, 线段裁剪
 + 可以改变画布尺寸, 画笔颜色
 + 可以保存图片, ~~加载图片~~  
+
+
 下面是说明书:  
 ### 程序界面
 浏览器打开`mypaint.html`后，你会看到如下界面

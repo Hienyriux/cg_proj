@@ -9,7 +9,7 @@ Project of Nanjing University's Introduction to Computer Graphics course in 2019
 
 下面是说明书:  
 ### 程序界面
-浏览器打开`mypaint.html`后，你会看到如下界面
+浏览器打开`mypaint.html`后，你会看到如下界面  
 ![https://github.com/Hienyriux/cg_proj/blob/master/picture/grpc29.png](https://github.com/Hienyriux/cg_proj/blob/master/picture/grpc29.png)
 
 ### 设置画布大小

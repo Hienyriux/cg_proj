@@ -23,7 +23,7 @@ Project of Nanjing University's Introduction to Computer Graphics course in 2019
 ![https://github.com/Hienyriux/cg_proj/blob/master/picture/grpc33.png](https://github.com/Hienyriux/cg_proj/blob/master/picture/grpc33.png)
 
 ### 设置颜色
-点击`设置颜色`，在弹出窗口中输入RGB值，点击`确定`，可以看到当前颜色改变了（下面的演示中，在更改颜色后，重新画了个椭圆）
+点击`设置颜色`，在弹出窗口中输入RGB值，点击`确定`，可以看到当前颜色改变了（下面的演示中，在更改颜色后，重新画了个椭圆）  
 ![https://github.com/Hienyriux/cg_proj/blob/master/picture/grpc34.gif](https://github.com/Hienyriux/cg_proj/blob/master/picture/grpc34.gif)
 
 

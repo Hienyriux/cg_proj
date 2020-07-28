@@ -18,7 +18,7 @@ Project of Nanjing University's Introduction to Computer Graphics course in 2019
 
 ### 保存图片
 点击`保存图片`，在弹出窗口中输入文件名，点击`确定`，便可下载文件到本地
-![https://github.com/Hienyriux/hienyriux_pics/blob/master/grpc31.png](https://github.com/Hienyriux/hienyriux_pics/blob/master/grpc31.png)
+![https://github.com/Hienyriux/hienyriux_pics/blob/master/grpc31.png](https://github.com/Hienyriux/hienyriux_pics/blob/master/grpc31.png)  
 ![https://github.com/Hienyriux/hienyriux_pics/blob/master/grpc32.png](https://github.com/Hienyriux/hienyriux_pics/blob/master/grpc32.png)
 ![https://github.com/Hienyriux/hienyriux_pics/blob/master/grpc33.png](https://github.com/Hienyriux/hienyriux_pics/blob/master/grpc33.png)
 
